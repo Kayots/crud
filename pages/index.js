@@ -27,7 +27,7 @@ export default function Home() {
 
       <main className={styles.main}>
       {!users? <p> No users found </p>: users.results?.map( user => (
-        <div key ={user.id.name} class="card w-50 mb-2">
+        <div key ={user.id.name} class="card w-25 text-bg-light mb-2">
           <div class="card-body">
             <img src={user.picture.medium} class="card-img-left"></img>
             <h5 class="card-title" >{user.name.first} {user.name.last}</h5>
@@ -38,16 +38,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
+        <a href='https://github.com/Kayots/crud'> TEAM ANC </a>
       </footer>
     </div>
   )
