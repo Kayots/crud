@@ -34,7 +34,9 @@ export default function Home() {
           return user
         } else if (user.name.first.toLowerCase().includes(query.toLowerCase())) {
           return user
-        }
+        } else if (user.name.last.toLowerCase().includes(query.toLowerCase())) {
+          return user
+        } 
       }).map( user => (
         <div  class="card w-25 text-bg-light mb-2">
           <div class="card-body">
