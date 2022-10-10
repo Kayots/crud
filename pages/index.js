@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 export default function Home() {
   const [users, setUsers] = useState([])
+  const [query, setQuery] = useState('')
 
   useEffect(() => {
     fetch("https://randomuser.me/api/?results=100")
@@ -18,6 +19,7 @@ export default function Home() {
 
 
   return (
+    [
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
@@ -26,8 +28,15 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-      {!users? <p> No users found </p>: users.results?.map( user => (
-        <div key ={user.id.name} class="card w-25 text-bg-light mb-2">
+      <input class="form-control w-25 mb-2" placeholder="Search User" onChange={event => setQuery(event.target.value)} />
+      {users.results?.filter(user => {
+        if (query === "") {
+          return user
+        } else if (user.name.first.toLowerCase().includes(query.toLowerCase())) {
+          return user
+        }
+      }).map( user => (
+        <div  class="card w-25 text-bg-light mb-2">
           <div class="card-body">
             <img src={user.picture.medium} class="card-img-left"></img>
             <h5 class="card-title" >{user.name.first} {user.name.last}</h5>
@@ -40,6 +49,6 @@ export default function Home() {
       <footer className={styles.footer}>
         <a href='https://github.com/Kayots/crud'> TEAM ANC </a>
       </footer>
-    </div>
+    </div>]
   )
 }
